@@ -8,7 +8,7 @@ export const useCsfrToken = () => {
     if (!csrfToken) {
       const getCsfrToken = async () => {
         const { data } = await axios.get<CsrfToken>(
-          `${process.env.API_URL}/csrf`
+          `${import.meta.env.VITE_API_URL}/csrf`
         )
         setCsrfToken(data.csrf_token)
       }
