@@ -1,11 +1,11 @@
 import { FC, useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Auth, Todo } from "./pages"
-import { useCsfrToken } from "./hooks/useCsrfToken"
 import axios from "axios"
+import { useCsrfToken } from "./hooks"
 
 const App: FC = () => {
-  const { csrfToken } = useCsfrToken()
+  const { csrfToken } = useCsrfToken()
 
   useEffect(() => {
     if (!csrfToken) return

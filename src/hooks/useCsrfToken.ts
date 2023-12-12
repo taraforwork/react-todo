@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { CsrfToken } from "../types"
 
-export const useCsfrToken = () => {
+export const useCsrfToken = () => {
   const [csrfToken, setCsrfToken] = useState<CsrfToken["csrf_token"]>()
   useEffect(() => {
     if (!csrfToken) {
