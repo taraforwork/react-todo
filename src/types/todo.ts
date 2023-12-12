@@ -1,6 +1,6 @@
 export type Todo = {
   id: number
   title: string
-  createdAt: Date
-  updatedAt: Date
+  created_at: Date
+  updated_at: Date
 }

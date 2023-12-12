@@ -1,5 +1,5 @@
 export type CsrfToken = {
-  csrfToken: string
+  csrf_token: string
 }
 
 export type Creadential = {
