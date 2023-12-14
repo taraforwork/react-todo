@@ -2,7 +2,7 @@ import { FC } from "react"
 import { useAuth } from "../hooks"
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/solid"
 
-export const Todo: FC = () => {
+export const Todos: FC = () => {
   const { logoutMutation } = useAuth()
   const logout = async () => {
     await logoutMutation.mutateAsync()

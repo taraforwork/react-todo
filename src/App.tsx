@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Auth, Todo } from "./pages"
+import { Auth, Todos } from "./pages"
 import { CsrfToken } from "./types"
 import axios from "axios"
 import { apiUrl } from "./utils/const"
@@ -19,7 +19,7 @@ const App: FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Auth />} />
-        <Route path="/todo" element={<Todo />} />
+        <Route path="/todo" element={<Todos />} />
       </Routes>
     </BrowserRouter>
   )
