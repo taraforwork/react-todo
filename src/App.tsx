@@ -1,17 +1,19 @@
 import { FC, useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Auth, Todo } from "./pages"
+import { CsrfToken } from "./types"
 import axios from "axios"
-import { useCsrfToken } from "./hooks"
+import { apiUrl } from "./utils/const"
 
 const App: FC = () => {
-  const { csrfToken } = useCsrfToken()
-
   useEffect(() => {
-    if (!csrfToken) return
-    axios.defaults.withCredentials = true
-    axios.defaults.headers.common["X-CSRF-Token"] = csrfToken
-  }, [csrfToken])
+    const getCsfrToken = async () => {
+      axios.defaults.withCredentials = true
+      const { data } = await axios.get<CsrfToken>(`${apiUrl}/csrf`)
+      axios.defaults.headers.common["X-CSRF-Token"] = data.csrf_token
+    }
+    getCsfrToken()
+  }, [])
 
   return (
     <BrowserRouter>

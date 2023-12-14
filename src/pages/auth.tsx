@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, FormEventHandler, useState } from "react"
 import { useAuth } from "../hooks"
 import {
   ArrowPathIcon,
@@ -11,7 +11,8 @@ export const Auth: FC = () => {
   const [isLogin, setIsLogin] = useState(true)
   const { loginMutation, registerMutation } = useAuth()
 
-  const submitHandler = async () => {
+  const submitHandler: FormEventHandler = async (e) => {
+    e.preventDefault()
     if (isLogin) {
       loginMutation.mutate({ email, password })
       return
@@ -29,7 +30,7 @@ export const Auth: FC = () => {
         <span className="text-center text-3xl font-extrabold">Todo </span>
       </div>
       <h2 className="my-6">{isLogin ? "Login" : "Create a new account"}</h2>
-      <form onSubmit={() => submitHandler}>
+      <form onSubmit={submitHandler}>
         <div>
           <input
             className="mb-3 px-3 text-sm py-2 border border-gray-300"
